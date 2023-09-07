@@ -12,4 +12,4 @@ def pirmais(par1, par2):
     else:
         return summa
 
-print("The result is", pirmais(40,30) )
+print("The result is", pirmais(20,30) )
