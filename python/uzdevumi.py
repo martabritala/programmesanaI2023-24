@@ -110,5 +110,12 @@ def pedejais(n):
 
 # pedejais(7)
 
+def pedejais_ar_rekursiju(n):
+    if n == 1:
+        print("* ")
+    else:
+        print ("* "*n)
+        pedejais_ar_rekursiju(n-1)
 
+pedejais_ar_rekursiju(5)
 
