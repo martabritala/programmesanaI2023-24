@@ -44,13 +44,13 @@ def ceturtais(teksts, n):
 
 def piektais(saraksts):
     print("Dotais saraksts:", saraksts)
-    print("Result is", saraksts[0]==saraksts[-1])
+    print("Resultāts ir", saraksts[0]==saraksts[-1])
     return
 
-# skaitli1 = [10, 20, 30, 40, 10]
+skaitli1 = [10, 20, 30, 40, 10]
 # skaitli2 = [75, 65, 35, 75, 30]
 
-# piektais(skaitli2)
+#piektais(skaitli1)
 
 
 def sestais(saraksts):
@@ -71,7 +71,7 @@ def astotais(n):
         print()
     return
 
-# astotais(8)
+astotais(8)
 
 def devitais(skaitlis):
     teksta_forma = str(skaitlis)
