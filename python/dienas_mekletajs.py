@@ -1,5 +1,6 @@
 def dienas_mekletajs (sis_gads, sis_menesis, sis_datums, si_diena, dz_gads, dz_menesis, dz_datums):
-    menesu_dienu_skaits = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    menesu_dienu_skaits = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    dienu_nosaukumi = ["nekas", "pirmdiena", "otrdiena", "trešdiena", "ceturtdiena", "piektdiena", "sestdiena", "svētdiena"]
     
     #Skaitām, cik dienas ir pagājušas
     #Pārbaude, vai šogad jau ir bijusi dzimšanas diena
@@ -31,11 +32,50 @@ def dienas_mekletajs (sis_gads, sis_menesis, sis_datums, si_diena, dz_gads, dz_m
 
     pagajusas_dienas += garie_gadi
 
-    # cik pilni mēneši ir pagājuši?
+    # cik pilni mēneši ir pagājuši kopš pēdējās dzimšanas dienas?
+    if sis_menesis>=dz_menesis:
+        pilni_menesi = sis_menesis-dz_menesis
+    else:
+        pilni_menesi = sis_menesis+12-dz_menesis
+
+    if vai_datums_pagajis(1, sis_datums, 1, dz_datums) == False:
+        pilni_menesi = pilni_menesi - 1
+
+    dienas_menesos = 0
+
+    menesis = dz_menesis
+    while menesis != sis_menesis:
+        print("Šis:", sis_menesis)
+        dienas_menesos += menesu_dienu_skaits[menesis]
+        print("skaititajs:", menesis)
+        menesis +=1
+        if menesis == 13:
+            menesis=1
+
+    pagajusas_dienas += dienas_menesos
+
+    if sis_datums>=dz_datums:
+        ekstra_dienas = sis_datums-dz_datums
+    else:
+        ekstra_dienas = sis_datums + menesu_dienu_skaits[sis_menesis-1] - dz_datums
+
+    pagajusas_dienas += ekstra_dienas
+
+    print("Kopš dzimšanas ir pagājušas: ", pagajusas_dienas, " dienas.")
     # cik dienas ir kopā pa tiem mēnešiem?
     # cik dienas ir pagājušas nepilnajā mēnesī?
 
-    return "OK"
+    dienu_atlikums = pagajusas_dienas % 7
+
+    dz_diena = si_diena-dienu_atlikums
+    
+    if dz_diena <=0:
+        dz_diena +=7
+
+    print("Jums ir ", pagajusie_gadi, " gadi, ", pilni_menesi, " menesi un ", ekstra_dienas, " dienas")
+
+
+    return dienu_nosaukumi[dz_diena]
 
 
 def vai_datums_pagajis(tagad_menesis, tagad_datums, salidzinamais_menesis, salidzinamais_datums):
@@ -47,3 +87,13 @@ def vai_datums_pagajis(tagad_menesis, tagad_datums, salidzinamais_menesis, salid
         return True
     return False
     
+
+dz_g = int(input("Lūdzu ievadiet savu dzimšanas gadu!:"))
+dz_m = int(input("Lūdzu ievadiet savu dzimšanas mēnesi!:"))
+dz_d = int(input("Lūdzu ievadiet savu dzimšanas datumu!:"))
+sis_g = int(input("Lūdzu ievadiet pašreizējo gadu!:"))
+sis_m = int(input("Lūdzu ievadiet pašreizējo mēnesi!:"))
+sis_d = int(input("Lūdzu ievadiet pašreizējo datumu!:"))
+sis_n = int(input("Lūdzu ievadiet pašreizējo nedēļas dienu!:"))
+
+print(dienas_mekletajs(sis_g, sis_m, sis_d, sis_n, dz_g, dz_m, dz_d))
