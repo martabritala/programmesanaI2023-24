@@ -20,6 +20,14 @@ class Cilveks:
             dz = self.sex
         print("Mani sauc {}, man ir {} gadi, es esmu {}".format(self.name, self.age, dz))
 
+    def uztaisit_spamu(self, failu_mape):
+        faila_nosaukums = failu_mape + "spams" + self.name + str(self.age)
+        faila_teksts = "Sveik{}(-a/-s/-i), {}! Tu esi laimēj{}(-usi/-is/-is) {}€!".format(sveiki_galotne, self.name, laimests_galotne, self.age*35)
+        with open(faila_nosaukums, "w", encoding="utf-8") as fails:
+            fails.write(faila_teksts)
+        
+
+
 
 persona1 = Cilveks("Marta", 32, "nenosakams")
 persona1.pastastit_par_sevi()
