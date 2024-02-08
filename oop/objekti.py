@@ -20,14 +20,18 @@ class Cilveks:
             dz = self.sex
         print("Mani sauc {}, man ir {} gadi, es esmu {}".format(self.name, self.age, dz))
 
-    def uztaisit_spamu(self, failu_mape):
-        faila_nosaukums = failu_mape + "spams" + self.name + str(self.age)
+    def uztaisit_spamu(self, spama_mape):
+        faila_nosaukums = spama_mape + "spams" + self.name + str(self.age) + ".txt"
         sveiki_galotne = "a"
         laimests_galotne = "usi"
-        faila_teksts = "Sveik{}(-a/-s/-i), {}! Tu esi laimēj{}(-usi/-is/-is) {}€!".format(sveiki_galotne, self.name, laimests_galotne, self.age*35)
-        with open(faila_nosaukums, "w", encoding="utf-8") as fails:
-            fails.write(faila_teksts)
-        # self.nopelnit(35*self.age)
+        laimests = self.age*35
+
+        teksts = "Sveik{}(-a/-s/-i), {}(Vārds)! Tu esi laimēj{}(-usi/-is) {}(vecums*35)€!".format(sveiki_galotne, self.name, laimests_galotne, laimests)
+
+        with open(faila_nosaukums, "w", encoding="utf-8") as spams:
+            spams.write(teksts)
+
+        self.nopelnit(laimests)
         self.pastastit_par_sevi()
         
 
@@ -45,7 +49,9 @@ persona1.uztaisit_spamu("oop/spams/")
 # cilveki = []
 # while turpinat == "t":
 #     vards = input("Ievadiet cilvēka vārdu!: ")
-#     vecums = int(input("Ievadiet vecumu!: "))
+#     vecums = -1
+#     while vecums<0:
+#       vecums = int(input("Ievadiet vecumu!: "))
 #     dzimums = input("Ievadiet dzimumu (s/v)!:")
 #     cilveki.append( Cilveks(vards, vecums, dzimums) )
 #     turpinat = input("Ja vēlies pievienot vēl vienu cilvēku, nospied 't' !")
