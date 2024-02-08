@@ -49,9 +49,7 @@ persona1.uztaisit_spamu("oop/spams/")
 # cilveki = []
 # while turpinat == "t":
 #     vards = input("Ievadiet cilvēka vārdu!: ")
-#     vecums = -1
-#     while vecums<0:
-#       vecums = int(input("Ievadiet vecumu!: "))
+#     vecums = int(input("Ievadiet vecumu!: "))
 #     dzimums = input("Ievadiet dzimumu (s/v)!:")
 #     cilveki.append( Cilveks(vards, vecums, dzimums) )
 #     turpinat = input("Ja vēlies pievienot vēl vienu cilvēku, nospied 't' !")
