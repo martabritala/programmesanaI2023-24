@@ -22,9 +22,13 @@ class Cilveks:
 
     def uztaisit_spamu(self, failu_mape):
         faila_nosaukums = failu_mape + "spams" + self.name + str(self.age)
+        sveiki_galotne = "a"
+        laimests_galotne = "usi"
         faila_teksts = "Sveik{}(-a/-s/-i), {}! Tu esi laimēj{}(-usi/-is/-is) {}€!".format(sveiki_galotne, self.name, laimests_galotne, self.age*35)
         with open(faila_nosaukums, "w", encoding="utf-8") as fails:
             fails.write(faila_teksts)
+        # self.nopelnit(35*self.age)
+        self.pastastit_par_sevi()
         
 
 
@@ -35,6 +39,7 @@ persona1.dzimsanas_diena()
 persona1.pastastit_par_sevi()
 # persona1.nopelnit(30)
 persona1.pastastit_par_sevi()
+persona1.uztaisit_spamu("oop/spams/")
 
 # turpinat = "t"
 # cilveki = []
